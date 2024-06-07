@@ -57,7 +57,7 @@ app.get('/users', async (req, res) => {
     try {
         // const users = await User.find({}, '-password'); // Exclude the password field
         const users = await User.find();
-        res.json(users);
+        res.json({ message: "Success", data: users });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
