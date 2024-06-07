@@ -46,7 +46,7 @@ app.post('/login', async (req, res) => {
         // Create new user
         const newUser = new User({ email, password });
         const savedUser = await newUser.save();
-        res.status(201).json({ message: 'User registered successfully', user: savedUser });
+        res.status(201).json({ message: 'User registered successfully' });
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
