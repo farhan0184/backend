@@ -23,7 +23,7 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', userSchema);
 
-const port = 5000;
+const port =  5000;
 app.get("/", (req, res) => {
     res.status(200).json({ message: "Hello World" });
 });
