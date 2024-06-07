@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 
 const app = express();
-
+app.use(express.json());
 
 dotenv.config()
 
@@ -25,13 +25,14 @@ const User = mongoose.model('User', userSchema);
 
 const port = 5000;
 app.get("/", (req, res) => {
-    res.send("Hello World!");
+    res.status(200).json({ message: "Hello World" });
 });
 
 
 // login with google
 app.post('/login', async (req, res) => {
     const { email, password } = req.body;
+    
 
     try {
         // Check if user already exists
@@ -57,7 +58,7 @@ app.get('/users', async (req, res) => {
     try {
         // const users = await User.find({}, '-password'); // Exclude the password field
         const users = await User.find();
-        res.json({ message: "Success", data: users });
+        res.status(200).json({ message: "Success", data: users });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
