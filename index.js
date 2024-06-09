@@ -5,7 +5,7 @@ import cors from 'cors';
 
 const app = express();
 app.use(express.json());
-app.use(cors({ origin: 'https://zippy-salamander-f8eb64.netlify.app/' }));
+app.use(cors({ origin: 'https://zippy-salamander-f8eb64.netlify.app' }));
 dotenv.config()
 
 mongoose
