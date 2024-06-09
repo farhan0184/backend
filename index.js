@@ -1,10 +1,11 @@
 import express from "express";
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+import cors from 'cors';
 
 const app = express();
 app.use(express.json());
-
+app.use(cors({ origin: 'http://127.0.0.1:5500' }));
 dotenv.config()
 
 mongoose
@@ -49,7 +50,7 @@ app.post('/login', async (req, res) => {
         const savedUser = await newUser.save();
         res.status(201).json({ message: 'User registered successfully' });
     } catch (error) {
-        res.status(400).json({ message: error.message });
+        res.status(401).json({ message: error.message });
     }
 });
 
