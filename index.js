@@ -5,7 +5,16 @@ import cors from 'cors';
 
 const app = express();
 app.use(express.json());
-app.use(cors({ origin: 'https://zippy-salamander-f8eb64.netlify.app' }));
+const allowedOrigins = ['http://127.0.0.1:5500', 'https://goooogle1.netlify.app/'];
+app.use(cors({
+    origin: function (origin, callback) {
+        if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    }
+}));
 dotenv.config()
 
 mongoose
