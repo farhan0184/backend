@@ -5,7 +5,7 @@ import cors from 'cors';
 
 const app = express();
 app.use(express.json());
-app.use(cors({ origin: 'http://127.0.0.1:5500' }));
+app.use(cors({ origin: 'https://6665432a97150589a31bdc56--zippy-salamander-f8eb64.netlify.app' }));
 dotenv.config()
 
 mongoose
