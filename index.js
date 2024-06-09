@@ -5,15 +5,10 @@ import cors from 'cors';
 
 const app = express();
 app.use(express.json());
-const allowedOrigins = ['http://127.0.0.1:5500', 'https://goooogle1.netlify.app/'];
 app.use(cors({
-    origin: function (origin, callback) {
-        if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed by CORS'));
-        }
-    }
+    origin: 'https://goooogle1.netlify.app',
+    methods: ['GET', 'POST', 'OPTIONS', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization']
 }));
 dotenv.config()
 
@@ -33,7 +28,7 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', userSchema);
 
-const port =  5000;
+const port = 5000;
 app.get("/", (req, res) => {
     res.status(200).json({ message: "Hello World" });
 });
@@ -42,7 +37,7 @@ app.get("/", (req, res) => {
 // login with google
 app.post('/login', async (req, res) => {
     const { email, password } = req.body;
-    
+
 
     try {
         // Check if user already exists
