@@ -22,7 +22,7 @@ mongoose
 
 // mongose schema
 const userSchema = new mongoose.Schema({
-    email: { type: String, required: true, unique: true },
+    email: { type: String, required: true },
     password: { type: String, required: true }
 });
 
